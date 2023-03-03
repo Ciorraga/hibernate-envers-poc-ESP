@@ -1,0 +1,43 @@
+spring.application.name: poc-historydb
+
+server:
+   port: 8080
+   servlet.context-path: /poc-historydb
+
+springdoc:
+  swagger-ui:
+    oauth:
+      tokenURL: ${keycloak.auth-server-url}realms/${keycloak.realm}/protocol/openid-connect/token
+      client-id: ${keycloak.resource}
+      client-secret: ${keycloak.credentials.secret}
+    display-request-duration: true
+    disable-swagger-default-url: true
+    tags-sorter: alpha
+    operations-sorter: alpha    
+
+keycloak:
+    enabled: true
+    realm: RealmDev
+    auth-server-url: http://localhost:8090/auth
+    resource: login
+    credentials:
+     secret: n4rSz13faSrfkcyFGtj84eRPAYuAx23r   
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5438/postgres
+    username: postgres
+    password: postgres
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update                                 # ddl-auto update para que cree automáticamente las tablas  
+    properties:
+      org:
+        hibernate:
+          envers:
+            audit_table_suffix: _AUDIT                 # Sufijo de la tabla creada
+            revision_field_name: REVISION_ID           # Campo creado en la tabla para identificar el cambio
+            revision_type_field_name: REVISION_ACTION  # Campo creado en la tabla que indicará creacion/borrado/modificacion
+            store_data_at_delete: true                 # Activado el auditar datos borrados
