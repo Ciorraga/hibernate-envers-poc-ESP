@@ -11,7 +11,7 @@ La presentación y paquetería tendría que ser de la siguiente manera:
 ## Contenido de la POC
 
 Para esta POC, en el propio repositorio se crea un proyecto de Spring, en el cuál partiendo de tener unas entidades **Car**, según los cambios que se hagan en ellas vía Api Rest, tendrá que quedar un rastro del qué se ha hecho (crear, modificar y borrar) y, además, tendremos la capacidad de añadir campos extra como pueden ser el usuario que ha hecho los cambios, fecha... etc. 
-También haremos uso de **Keycloak** para poder securizar la misma y posteriormente guardar el usuario que ha hecho cambios en nuestras entidades.
+También haremos uso de **Keycloak** para poder securizar la misma y posteriormente guardar el usuario que ha hecho cambios en nuestras entidades. Para instalar de manera local Keycloak vía docker, podemos seguir los pasos de este repositorio: https://github.com/Ciorraga/keycloak-postgre-poc-ESP .
 
 Se disponibiliza un swagger para poder realizar estos cambios de manera fácil y sencilla. la url es: http://localhost:8080/poc-historydb/swagger-ui.html
 
